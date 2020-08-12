@@ -1,8 +1,9 @@
+require("dotenv").config()
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Saving Lives Fitness`,
+    description: `Grind. Sweat. Give.`,
+    author: `SLF`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -19,22 +20,31 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `saving-lives-fitness`,
+        short_name: `slf`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#3AD6EA`,
+        theme_color: `#3AD6EA`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: `gatsby-source-contentful`,
       options: {
-        typekit: {
-          id: 'fmy5kst'
-        }
-      }
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Barlow"],
+        },
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

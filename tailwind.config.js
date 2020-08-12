@@ -3,11 +3,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'display': ['cooper-black-std', 'serif'],
+        display: ["Barlow", "sans-serif"],
       },
       colors: {
-        primary: 'pink'
-      }
+        primary: "#3AD6EA",
+        secondary: "#34435E",
+      },
     },
   },
   variants: {},
