@@ -7,6 +7,7 @@ module.exports = {
       },
       colors: {
         primary: "#3AD6EA",
+        "primary-transparent": "rgba(58, 214, 234, .77)",
         secondary: "#34435E",
       },
     },
