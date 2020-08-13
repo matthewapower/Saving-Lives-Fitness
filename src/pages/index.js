@@ -12,7 +12,7 @@ import BrandSections from "../components/brandSections"
 const IndexPage = ({ data }) => {
   const content = data.contentfulHomePage
   return (
-    <Layout>
+    <Layout home>
       <SEO title="Home" />
       <HeroHome
         bg={content.heroImage}

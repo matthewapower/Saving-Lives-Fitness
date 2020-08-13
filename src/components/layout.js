@@ -10,9 +10,10 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Footer from "./footer"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = props => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -20,16 +21,33 @@ const Layout = ({ children }) => {
           title
         }
       }
+      contentfulSettings(id: { eq: "8079e588-0cc4-5c87-89bd-fae497422578" }) {
+        aboutPageTitle
+        membershipPageTitle
+        testimonialPageTitle
+        contactPageTitle
+      }
     }
   `)
+  const links = [
+    { name: data.contentfulSettings.aboutPageTitle, dest: "/about" },
+    { name: data.contentfulSettings.membershipPageTitle, dest: "/memberships" },
+    {
+      name: data.contentfulSettings.testimonialPageTitle,
+      dest: "/success-stories",
+    },
+    { name: data.contentfulSettings.contactPageTitle, dest: "/contact" },
+  ]
 
   return (
     <div className="min-h-screen relative">
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
-      <footer className="text-center absolute inset-x-0 bottom-0 font-display">
-        © {new Date().getFullYear()}, Standard OS
-      </footer>
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        home={props.home}
+        links={links}
+      />
+      <main>{props.children}</main>
+      <Footer links={links} />
     </div>
   )
 }

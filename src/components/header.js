@@ -1,84 +1,55 @@
 import { Link } from "gatsby"
 import React, { useState } from "react"
-import {useSpring, animated} from 'react-spring'
+import MobileNav from "./mobileNav"
+import Hamburger from "./hamburger"
+import { css } from "@emotion/core"
 
-const Header = () => {
+import logo from "../images/slf-logo.svg"
+
+const Header = props => {
   const [navOpen, setNavOpen] = useState(false)
-  const animation = useSpring({
-    transform: navOpen ? 'translateX(0)' : 'translateX(-100%)',
-    x: navOpen ? 100 : 0,
-    from: { x: 0 }
-  })
+  const logoPos = props.home
+    ? "translate(-50%, 70%) scale(1.5)"
+    : "translateX(-50%)"
 
   return (
     <>
-      <header className="flex w-full justify-between items-center p-4 z-20 fixed">
-        <Link to="/"><h2 className="font-display uppercase">s.o.s.</h2></Link>
-        <button onClick={() => setNavOpen(!navOpen)}>
-          <animated.svg viewBox="0 0 20 20" className="w-8">
-            <animated.path d="M0 5 H20"
-              stroke="black"
-              strokeDashoffset={
-                animation.x.interpolate({
-                  range: [0, 100], 
-                  output: [0, 100,]
-                })
-              }
-              strokeDasharray="100"
-            />
-            <animated.path d="M0 10 H20" 
-              stroke="black" 
-              strokeDashoffset={
-                animation.x.interpolate({
-                  range: [0, 100], 
-                  output: [0, -100]
-                })
-              }
-              strokeDasharray="100"
-            />
-            <animated.path 
-              d="M0 15 H20"
-              stroke="black"
-              strokeDashoffset={
-                animation.x.interpolate({
-                  range: [0, 100], 
-                  output: [0, 100]
-                })
-              }
-              strokeDasharray="100"
-            />
-            <animated.path 
-              d="M0 0 L20 20"
-              stroke="black"
-              strokeDashoffset={
-                animation.x.interpolate({
-                  range: [0, 100], 
-                  output: [100, 0]
-                })
-              }
-              strokeDasharray="100"
-            />
-            <animated.path 
-              d="M20 0 L0 20"
-              stroke="black"
-              strokeDashoffset={
-                animation.x.interpolate({
-                  range: [0, 100], 
-                  output: [100, 0]
-                })
-              }
-              strokeDasharray="100"
-            />
-          </animated.svg>
-        </button>
+      <header>
+        <Link
+          to="/"
+          className="absolute top-0 left-0 p-4 z-20"
+          css={css`
+            @media (min-width: 1024px) {
+              left: 50%;
+              transform: ${logoPos};
+            }
+          `}
+        >
+          <img
+            src={logo}
+            alt="Saving Lives Fitness"
+            className="w-1/2 lg:w-full"
+          />
+        </Link>
+        <Hamburger open={navOpen} setOpen={setNavOpen} />
       </header>
-      <animated.nav style={animation} className="font-display uppercase fixed bg-primary inset-0 flex flex-col items-center justify-center z-10">
-        <ul>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </animated.nav>
+      <MobileNav open={navOpen} links={props.links} />
+      <div className="absolute inset-x-0 top-0 px-8 xl:px-20 pt-12 hidden lg:block">
+        {props.links.map((l, i) => {
+          const divide = i + 1 > props.links.length / 2
+          return (
+            <Link
+              to={l.dest}
+              className={
+                "text-white m-4 xl:m-8 inline-block" +
+                (divide ? " float-right" : "")
+              }
+            >
+              {l.name}
+            </Link>
+          )
+        })}
+      </div>
     </>
   )
 }
