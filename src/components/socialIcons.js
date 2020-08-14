@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import fb from "../images/fb.svg"
 import tw from "../images/tw.svg"
 import li from "../images/in.svg"

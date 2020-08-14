@@ -17,7 +17,6 @@ const Memberships = ({ data }) => {
         description={content.description.description}
       />
       {content.memberships.map((m, i) => {
-        const addtl = i % 2 === 0 ? "" : "md:col-start-2 md:row-start-1"
         return (
           <section
             key={i}

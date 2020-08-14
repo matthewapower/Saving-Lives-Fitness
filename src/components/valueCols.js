@@ -12,8 +12,8 @@ export default function ValueCols(props) {
                 className="bg-gray-200 rounded-full relative mb-12"
                 style={{ paddingBottom: "100%" }}
               >
-                <div className="absolute inset-0 p-20 flex items-center justify-center">
-                  <img src={p.icon.fixed.src} alt={p.name} className="w-3/4" />
+                <div className="absolute inset-0 p-10 flex items-center justify-center">
+                  <img src={p.icon.fixed.src} alt={p.name} className="mb-0" />
                 </div>
               </div>
               <h2 className="uppercase">{p.name}</h2>
