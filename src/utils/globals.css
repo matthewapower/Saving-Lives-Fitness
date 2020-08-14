@@ -42,6 +42,10 @@
   @apply btn-small px-6 py-6 rounded-lg font-bold;
 }
 
+.service-wrap ul {
+  @apply list-disc;
+}
+
 @tailwind components;
 
 @tailwind utilities;
