@@ -6,8 +6,7 @@ function encode(data) {
     .join("&")
 }
 
-export default function SubscribeForm(props) {
-  const btnClasses = "btn-large" + (props.full ? " w-full" : "")
+export default function ContactForm(props) {
   const [submission, setSubmission] = useState({})
 
   const handleChange = e => {
@@ -37,6 +36,22 @@ export default function SubscribeForm(props) {
       onSubmit={handleSubmit}
       id="contact-form"
     >
+      <input type="hidden" name="form-name" value="subscribeForm" />
+      <p hidden>
+        <label>
+          Don’t fill this out: <input name="bot-field" />
+        </label>
+      </p>
+      <div className="flex flex-col bg-gray-300 rounded-lg p-4 mb-4">
+        <label htmlFor="name">Your Name</label>
+        <input
+          className="bg-gray-300"
+          type="text"
+          name="name"
+          id="name"
+          onChange={handleChange}
+        />
+      </div>
       <div className="flex flex-col bg-gray-300 rounded-lg p-4 mb-4">
         <label htmlFor="email">Email Address</label>
         <input
@@ -47,7 +62,16 @@ export default function SubscribeForm(props) {
           onChange={handleChange}
         />
       </div>
-      <button className={btnClasses}>Sign Up</button>
+      <div className="flex flex-col bg-gray-300 rounded-lg p-4 mb-4">
+        <label htmlFor="message">Your Message</label>
+        <textarea
+          className="bg-gray-300"
+          name="message"
+          id="message"
+          onChange={handleChange}
+        />
+      </div>
+      <button className="btn-large">Submit</button>
     </form>
   )
 }

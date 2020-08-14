@@ -10,7 +10,7 @@ const SuccessStories = ({ data }) => {
   const content = data.contentfulTestimonialsPage
   return (
     <Layout>
-      <SEO title="About" />
+      <SEO title="Success Stories" />
       <Hero
         bg={content.heroImage}
         title={content.title}
