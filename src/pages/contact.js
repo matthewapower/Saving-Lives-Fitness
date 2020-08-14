@@ -37,7 +37,7 @@ const Contact = ({ data }) => {
             background: `url(${content.ctaBackgroundImage.fluid.src}) center center/cover`,
             borderRadius: "50px",
           }}
-          className="w-full p-32 container mx-auto"
+          className="w-full p-12 md:p-32 container mx-auto"
         >
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-white font-bold subheading mb-12">

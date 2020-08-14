@@ -38,7 +38,9 @@ export default function SubscribeForm(props) {
       id="contact-form"
     >
       <div className="flex flex-col bg-gray-300 rounded-lg p-4 mb-4">
-        <label htmlFor="email">Email Address</label>
+        <label htmlFor="email" className="text-left">
+          Email Address
+        </label>
         <input
           className="bg-gray-300"
           type="email"

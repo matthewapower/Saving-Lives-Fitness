@@ -7,7 +7,7 @@ export default function BrandSections(props) {
         return (
           <div key={i} className="max-w-3xl py-20 mx-auto text-center">
             <h2 className="heading uppercase">{s.title}</h2>
-            <p className="body">{s.description.description}</p>
+            <p className="body mx-auto">{s.description.description}</p>
             <div className="grid md:grid-cols-4">
               {s.brands.map((b, i) => {
                 return (

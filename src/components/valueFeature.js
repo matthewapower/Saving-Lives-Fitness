@@ -5,7 +5,7 @@ export default function ValueFeature(props) {
     <section className="flex flex-col items-center justify-center py-20">
       <div className="container mx-auto px-8 text-center mb-12">
         <h2 className="heading">{props.heading}</h2>
-        <p className="body mb-20">{props.description}</p>
+        <p className="body mb-20 mx-auto">{props.description}</p>
         {props.pillars.map((p, i) => {
           return (
             <div key={i} className="mb-20 max-w-2xl mx-auto">

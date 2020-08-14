@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 export default function ValueCols(props) {
   return (
     <section className="flex flex-col items-center justify-center pb-20">
-      <div className="container mx-auto px-8 grid md:grid-cols-3 gap-8 -mt-32 text-center mb-12">
+      <div className="container mx-auto px-8 grid md:grid-cols-3 gap-12 -mt-32 text-center mb-12">
         {props.pillars.map((p, i) => {
           return (
             <div key={i} className="text-center">
