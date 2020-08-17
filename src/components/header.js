@@ -15,15 +15,16 @@ const Header = props => {
       <header className="flex absolute top-0 inset-x-0 items-center justify-center ">
         <Link
           to="/"
-          className="p-4 z-20 order-2"
+          className="p-4 z-20 order-2 w-1/2 lg:w-1/5"
           css={css`
             transform: ${logoPos};
+            max-width: 400px;
           `}
         >
           <img
             src={logo}
             alt="Saving Lives Fitness"
-            className="w-2/3 lg:w-full mx-auto"
+            className="w-full mx-auto"
           />
         </Link>
         {props.links.map((l, i) => {
@@ -32,7 +33,7 @@ const Header = props => {
             <Link
               to={l.dest}
               className={
-                "text-white m-4 xl:m-8 hidden lg:inline-block" +
+                "text-white m-4 xl:m-8 hidden lg:inline-block relative z-30" +
                 (divide ? " order-3" : " order-1")
               }
             >
