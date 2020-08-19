@@ -138,12 +138,12 @@ export default function Cart() {
         title="Your Cart"
         description="REVIEW OF 0 ITEMS"
       />
-      <div className="min-h-screen flex flex-col items-center">
+      <div className="flex flex-col items-center py-24">
         <p className="text-center text-3xl mb-12 mx-4">
           Your shopping cart is empty.
         </p>
         <Link to="/shop" className="text-center underline">
-          Shop for Prints
+          Visit Our Shop
         </Link>
       </div>
     </Layout>
@@ -159,7 +159,7 @@ export default function Cart() {
         title="Your Cart"
         description={`REVIEW OF ${lineItems.length} ITEMS`}
       />
-      <div className="min-h-screen mx-2 mb-4 pt-24">
+      <div className="mx-2 mb-4 py-24">
         <div className="max-w-screen-lg mx-auto mb-12">
           {lineItems.map(item => (
             <React.Fragment key={item.id}>
