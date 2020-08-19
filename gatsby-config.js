@@ -1,4 +1,7 @@
-require("dotenv").config()
+require("dotenv").config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Saving Lives Fitness`,
@@ -27,6 +30,13 @@ module.exports = {
         theme_color: `#3AD6EA`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-theme-shopify-manager`,
+      options: {
+        shopName: process.env.SHOP_NAME,
+        accessToken: process.env.SHOP_TOKEN,
       },
     },
     {

@@ -32,11 +32,13 @@ const Layout = props => {
   const links = [
     { name: data.contentfulSettings.aboutPageTitle, dest: "/about" },
     { name: data.contentfulSettings.membershipPageTitle, dest: "/memberships" },
+    { name: "Apparel", dest: "/shop" },
     {
       name: data.contentfulSettings.testimonialPageTitle,
       dest: "/success-stories",
     },
     { name: data.contentfulSettings.contactPageTitle, dest: "/contact" },
+    { name: "Cart", dest: "/cart" },
   ]
 
   return (

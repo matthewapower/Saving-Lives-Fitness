@@ -33,7 +33,7 @@ const Header = props => {
             <Link
               to={l.dest}
               className={
-                "text-white m-4 xl:m-8 hidden lg:inline-block relative z-30" +
+                "text-white m-4 xl:m-8 hidden lg:inline-block relative z-30 uppercase" +
                 (divide ? " order-3" : " order-1")
               }
             >
