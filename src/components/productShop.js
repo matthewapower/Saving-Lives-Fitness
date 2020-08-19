@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import { useState, useEffect, useMemo } from "react"
 import { prepareVariantsWithOptions, prepareVariantsImages } from "../utils"
 import { useAddItemToCart } from "gatsby-theme-shopify-manager"
@@ -82,9 +83,13 @@ export default function ProductShop(props) {
                   ))}
                 </select>
               </div>
-              <button className="btn-small" onClick={() => handleAddToCart()}>
+              <Link
+                className="btn-small"
+                to="/cart"
+                onClick={() => handleAddToCart()}
+              >
                 Add to Cart
-              </button>
+              </Link>
             </div>
           </div>
         </div>
