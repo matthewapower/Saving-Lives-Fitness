@@ -68,6 +68,10 @@ export default function ProductShop(props) {
                     z-index: 1;
                     transform: rotate(-45deg);
                   }
+
+                  select {
+                    -webkit-appearance: none;
+                  }
                 `}
               >
                 {/* <label>Size</label> */}
