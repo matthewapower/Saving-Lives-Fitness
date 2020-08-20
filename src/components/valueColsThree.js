@@ -11,15 +11,12 @@ export default function ValueColsThree(props) {
           {props.title}
         </h2>
       </div>
-      <div className="container mx-auto px-8 grid md:grid-cols-3 gap-12 -mt-32 text-center mb-12">
+      <div className="container mx-auto px-8 grid md:grid-cols-3 gap-12 -mt-24 text-center mb-12">
         {props.pillars.map((p, i) => {
           return (
-            <div key={i} className="text-center">
-              <div
-                className="bg-gray-200 rounded-full relative mb-12"
-                style={{ paddingBottom: "100%" }}
-              >
-                <div className="absolute inset-0 p-10 flex items-center justify-center">
+            <div key={i} className="text-center flex flex-col items-center">
+              <div className="bg-gray-200 rounded-full relative mb-12 w-2/3">
+                <div className="p-10 flex items-center justify-center">
                   <img src={p.icon.fixed.src} alt={p.name} className="mb-0" />
                 </div>
               </div>

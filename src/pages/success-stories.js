@@ -25,13 +25,17 @@ const SuccessStories = ({ data }) => {
               "py-20 px-4 md:px-0 " + (i % 2 === 0 ? "" : "bg-gray-200")
             }
           >
-            <div className="container mx-auto grid md:grid-cols-2 items-center justify-center">
-              <div className={"relative inline-block mx-auto my-20 " + addtl}>
-                <div className="bg-primary absolute inset-0 z-0 transform -translate-x-20 translate-y-12 md:row-start-1" />
+            <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center justify-center">
+              <div
+                className={
+                  "mx-auto my-20 grid grid-cols-6 grid-rows-6 " + addtl
+                }
+              >
+                <div className="bg-primary z-0 row-span-5 row-start-2 col-span-5 col-start-1" />
                 <img
                   src={t.photo.fixed.src}
                   alt={t.name}
-                  className="relative z-10"
+                  className="relative mb-0 z-10 row-start-1 row-span-5 col-start-2 col-span-5"
                 />
               </div>
               <PersonInfo
