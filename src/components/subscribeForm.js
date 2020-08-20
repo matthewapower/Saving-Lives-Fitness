@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function encode(data) {
   return Object.keys(data)
@@ -24,7 +26,12 @@ export default function SubscribeForm(props) {
         "form-name": form.getAttribute("name"),
         ...submission,
       }),
-    }).catch(error => alert(error))
+    })
+      .catch(error => alert(error))
+      .then(() => {
+        toast.info("Thanks for signing up!")
+        form.querySelectorAll(".empty-on-submit").forEach(f => (f.value = ""))
+      })
   }
   return (
     <form
@@ -47,7 +54,7 @@ export default function SubscribeForm(props) {
           Email Address
         </label>
         <input
-          className="bg-gray-300"
+          className="bg-gray-300 empty-on-submit"
           type="email"
           name="email"
           id="email"
@@ -55,6 +62,7 @@ export default function SubscribeForm(props) {
         />
       </div>
       <button className={btnClasses}>Sign Up</button>
+      <ToastContainer />
     </form>
   )
 }

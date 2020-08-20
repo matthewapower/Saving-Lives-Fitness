@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function encode(data) {
   return Object.keys(data)
@@ -23,7 +25,12 @@ export default function ContactForm(props) {
         "form-name": form.getAttribute("name"),
         ...submission,
       }),
-    }).catch(error => alert(error))
+    })
+      .catch(error => alert(error))
+      .then(() => {
+        toast.info("Thanks we'll be in touch!")
+        form.querySelectorAll(".empty-on-submit").forEach(f => (f.value = ""))
+      })
   }
   return (
     <form
@@ -44,7 +51,7 @@ export default function ContactForm(props) {
       <div className="flex flex-col bg-gray-300 rounded-lg p-4 mb-4">
         <label htmlFor="name">Your Name</label>
         <input
-          className="bg-gray-300"
+          className="bg-gray-300 empty-on-submit"
           type="text"
           name="name"
           id="name"
@@ -54,7 +61,7 @@ export default function ContactForm(props) {
       <div className="flex flex-col bg-gray-300 rounded-lg p-4 mb-4">
         <label htmlFor="email">Email Address</label>
         <input
-          className="bg-gray-300"
+          className="bg-gray-300 empty-on-submit"
           type="email"
           name="email"
           id="email"
@@ -64,13 +71,14 @@ export default function ContactForm(props) {
       <div className="flex flex-col bg-gray-300 rounded-lg p-4 mb-4">
         <label htmlFor="message">Your Message</label>
         <textarea
-          className="bg-gray-300"
+          className="bg-gray-300 empty-on-submit"
           name="message"
           id="message"
           onChange={handleChange}
         />
       </div>
       <button className="btn-large">Submit</button>
+      <ToastContainer />
     </form>
   )
 }
