@@ -28,18 +28,17 @@ export default function ContactForm(props) {
   return (
     <form
       className="mb-0"
-      name="contactForm"
+      name="contact"
       method="post"
-      action="/success"
+      action="/thanks"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
-      id="contact-form"
     >
-      <input type="hidden" name="form-name" value="subscribeForm" />
+      <input type="hidden" name="form-name" value="contact" />
       <p hidden>
         <label>
-          Don’t fill this out: <input name="bot-field" />
+          Don’t fill this out: <input name="bot-field" value="contact" />
         </label>
       </p>
       <div className="flex flex-col bg-gray-300 rounded-lg p-4 mb-4">

@@ -29,15 +29,20 @@ export default function SubscribeForm(props) {
   return (
     <form
       className="mb-0"
-      name="contactForm"
+      name="subscribe"
       method="post"
       action="/success"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
-      id="contact-form"
     >
       <div className="flex flex-col bg-gray-300 rounded-lg p-4 mb-4">
+        <input type="hidden" name="form-name" value="subscribe" />
+        <p hidden>
+          <label>
+            Don’t fill this out: <input name="bot-field" value="subscribe" />
+          </label>
+        </p>
         <label htmlFor="email" className="text-left">
           Email Address
         </label>
