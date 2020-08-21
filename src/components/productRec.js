@@ -1,6 +1,6 @@
 import React from "react"
 import ProductCard from "./productCard"
-import Fade from "react-reveal/fade"
+import Fade from "react-reveal/Fade"
 
 export default function ProductRec(props) {
   return (

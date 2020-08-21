@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import Fade from "react-reveal/fade"
+import Fade from "react-reveal/Fade"
 
 export default function HeroHome(props) {
   return (

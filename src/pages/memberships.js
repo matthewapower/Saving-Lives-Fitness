@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Fade from "react-reveal/fade"
+import Fade from "react-reveal/Fade"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
