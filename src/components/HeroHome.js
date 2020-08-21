@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Fade from "react-reveal/fade"
 
 export default function HeroHome(props) {
   return (
@@ -10,8 +11,12 @@ export default function HeroHome(props) {
         className="container mx-auto flex flex-col items-center justify-end text-center px-8"
         style={{ paddingTop: "50vh" }}
       >
-        <h1 className="heading text-white mb-12">{props.title}</h1>
-        <Link to="/" className="btn-small-white mb-12">
+        <h1 className="heading text-white mb-12">
+          <Fade big cascade>
+            {props.title}
+          </Fade>
+        </h1>
+        <Link to="/memberships" className="btn-small-white mb-12">
           Get Started
         </Link>
       </div>

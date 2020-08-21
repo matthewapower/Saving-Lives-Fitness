@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Fade from "react-reveal/fade"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -26,18 +27,20 @@ const SuccessStories = ({ data }) => {
             }
           >
             <div className="container mx-auto grid md:grid-cols-2 gap-8 items-center justify-center">
-              <div
-                className={
-                  "mx-auto my-20 grid grid-cols-6 grid-rows-6 " + addtl
-                }
-              >
-                <div className="bg-primary z-0 row-span-5 row-start-2 col-span-5 col-start-1" />
-                <img
-                  src={t.photo.fixed.src}
-                  alt={t.name}
-                  className="relative mb-0 z-10 row-start-1 row-span-5 col-start-2 col-span-5"
-                />
-              </div>
+              <Fade>
+                <div
+                  className={
+                    "mx-auto my-20 grid grid-cols-6 grid-rows-6 " + addtl
+                  }
+                >
+                  <div className="bg-primary z-0 row-span-5 row-start-2 col-span-5 col-start-1" />
+                  <img
+                    src={t.photo.fixed.src}
+                    alt={t.name}
+                    className="relative mb-0 z-10 row-start-1 row-span-5 col-start-2 col-span-5"
+                  />
+                </div>
+              </Fade>
               <PersonInfo
                 name={t.name}
                 handle={t.instagramHandle}

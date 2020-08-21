@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import Fade from "react-reveal/fade"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -42,13 +43,15 @@ const Memberships = ({ data }) => {
                   Start Here
                 </a>
               </div>
-              <div
-                className="rounded-full"
-                style={{
-                  background: `url(${m.image.fixed.src}) center center/cover`,
-                  paddingBottom: "100%",
-                }}
-              />
+              <Fade>
+                <div
+                  className="rounded-full"
+                  style={{
+                    background: `url(${m.image.fixed.src}) center center/cover`,
+                    paddingBottom: "100%",
+                  }}
+                />
+              </Fade>
             </div>
           </section>
         )

@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Fade from "react-reveal/Fade"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from "../components/hero"
 import ProductCard from "../components/productCard"
 import ValueColsTwo from "../components/valueColsTwo"
-import ValueColsThree from "../components/valueColsThree"
 
 const Shop = ({ data }) => {
   const content = data.contentfulShopContent
@@ -19,21 +19,23 @@ const Shop = ({ data }) => {
         title={content.shopHeroTitle}
         description={content.shopHeroDescription.shopHeroDescription}
       />
-      <section className="py-24">
-        <div className="container mx-auto grid md:grid-cols-2 xl:grid-cols-4 gap-24 items-center justify-center">
-          {products.map((p, i) => {
-            return (
-              <ProductCard
-                key={i}
-                title={p.title}
-                slug={`/shop/${p.handle}`}
-                price={p.priceRange.maxVariantPrice.amount}
-                img={p.images[0].localFile.childImageSharp.fixed.src}
-              />
-            )
-          })}
-        </div>
-      </section>
+      <Fade bottom>
+        <section className="py-24">
+          <div className="container mx-auto grid md:grid-cols-2 xl:grid-cols-4 gap-24 items-center justify-center">
+            {products.map((p, i) => {
+              return (
+                <ProductCard
+                  key={i}
+                  title={p.title}
+                  slug={`/shop/${p.handle}`}
+                  price={p.priceRange.maxVariantPrice.amount}
+                  img={p.images[0].localFile.childImageSharp.fixed.src}
+                />
+              )
+            })}
+          </div>
+        </section>
+      </Fade>
       <ValueColsTwo
         pillars={content.productsFeatureValues}
         bg={content.productsIndexImage.fluid.src}
