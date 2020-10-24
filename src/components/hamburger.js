@@ -10,7 +10,7 @@ export default function Hamburger(props) {
   return (
     <button
       onClick={() => props.setOpen(!props.open)}
-      className="block lg:hidden absolute top-0 right-0 m-4 z-20"
+      className="block lg:hidden absolute top-0 right-0 m-4 z-50"
     >
       <animated.svg viewBox="0 0 20 20" className="w-8">
         <animated.path

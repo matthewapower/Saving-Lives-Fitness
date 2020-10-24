@@ -26,20 +26,36 @@ const Layout = props => {
         membershipPageTitle
         testimonialPageTitle
         contactPageTitle
+        shopLive
       }
     }
   `)
-  const links = [
+  let links = [
     { name: data.contentfulSettings.aboutPageTitle, dest: "/about" },
     { name: data.contentfulSettings.membershipPageTitle, dest: "/memberships" },
-    { name: "Apparel", dest: "/shop" },
     {
       name: data.contentfulSettings.testimonialPageTitle,
       dest: "/success-stories",
     },
     { name: data.contentfulSettings.contactPageTitle, dest: "/contact" },
-    { name: "Cart", dest: "/cart" },
   ]
+
+  if (data.contentfulSettings.shopLive) {
+    links = [
+      { name: data.contentfulSettings.aboutPageTitle, dest: "/about" },
+      {
+        name: data.contentfulSettings.membershipPageTitle,
+        dest: "/memberships",
+      },
+      { name: "Apparel", dest: "/shop" },
+      {
+        name: data.contentfulSettings.testimonialPageTitle,
+        dest: "/success-stories",
+      },
+      { name: data.contentfulSettings.contactPageTitle, dest: "/contact" },
+      { name: "Cart", dest: "/cart" },
+    ]
+  }
 
   return (
     <div className="min-h-screen relative">

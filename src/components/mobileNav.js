@@ -12,7 +12,7 @@ export default function MobileNav(props) {
   return (
     <animated.nav
       style={animation}
-      className="font-display uppercase fixed bg-primary inset-0 flex lg:hidden flex-col items-center justify-center z-10 text-center text-white"
+      className="font-display uppercase fixed bg-primary inset-0 flex lg:hidden flex-col items-center justify-center z-40 text-center text-white"
     >
       <ul>
         {props.links.map((l, i) => {

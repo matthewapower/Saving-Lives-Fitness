@@ -11,19 +11,39 @@ export default function BrandFeature(props) {
           return (
             <div key={i}>
               <h3 className="subheading">{s.title}</h3>
-              <p className="body mb-20 mx-auto">{s.description.description}</p>
+              {s.description ? (
+                <p className="body mb-20 mx-auto">
+                  {s.description.description}
+                </p>
+              ) : (
+                ""
+              )}
               <Fade bottom cascade>
-                <div className="grid md:grid-cols-4 mb-20">
+                <div
+                  className={`grid gap-8 md:grid-cols-${s.brands.length} justify-center items-center mb-20`}
+                >
                   {s.brands.map((b, i) => {
                     return (
-                      <div>
-                        <img
-                          src={b.logo.fixed.src}
-                          alt={b.name}
-                          className="mx-auto"
-                        />
-                        <p>{b.name}</p>
-                      </div>
+                      <a
+                        key={i}
+                        href={b.destinationUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {b.logo.fixed ? (
+                          <img
+                            src={b.logo.fixed.src}
+                            alt={b.name}
+                            className="mx-auto"
+                            style={{
+                              maxHeight: "150px",
+                            }}
+                          />
+                        ) : (
+                          ""
+                        )}
+                        {s.showNames ? <p>{b.name}</p> : ""}
+                      </a>
                     )
                   })}
                 </div>

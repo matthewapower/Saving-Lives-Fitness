@@ -15,7 +15,7 @@ const Header = props => {
       <header className="flex absolute top-0 inset-x-0 items-center justify-center ">
         <Link
           to="/"
-          className="p-4 z-20 order-2 w-1/2 lg:w-1/5"
+          className="p-4 z-50 order-2 w-1/2 lg:w-1/5"
           css={css`
             transform: ${logoPos};
             max-width: 400px;

@@ -82,7 +82,7 @@ export const query = graphql`
           description
         }
         image {
-          fixed(width: 200, quality: 100) {
+          fixed(width: 400, quality: 100) {
             src
           }
         }
@@ -103,7 +103,9 @@ export const query = graphql`
               src
             }
           }
+          destinationUrl
         }
+        showNames
       }
     }
   }

@@ -31,9 +31,13 @@ const Memberships = ({ data }) => {
                   {m.name}
                 </h2>
                 <p className="body">{m.description.description}</p>
-                <div className="service-wrap mb-12">
-                  {documentToReactComponents(m.details.json)}
-                </div>
+                {m.details ? (
+                  <div className="service-wrap mb-12">
+                    {documentToReactComponents(m.details.json)}
+                  </div>
+                ) : (
+                  ""
+                )}
                 <a
                   href={m.serviceUrl}
                   target="_blank"

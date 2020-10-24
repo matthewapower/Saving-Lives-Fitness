@@ -8,19 +8,37 @@ export default function BrandSections(props) {
         return (
           <div key={i} className="max-w-3xl py-20 mx-auto text-center">
             <h2 className="heading uppercase">{s.title}</h2>
-            <p className="body mx-auto">{s.description.description}</p>
+            {s.description ? (
+              <p className="body mx-auto">{s.description.description}</p>
+            ) : (
+              ""
+            )}
             <Fade bottom cascade>
-              <div className="grid md:grid-cols-4">
+              <div
+                className={`grid gap-8 md:grid-cols-${s.brands.length} justify-center items-center`}
+              >
                 {s.brands.map((b, i) => {
                   return (
-                    <div key={i}>
-                      <img
-                        src={b.logo.fixed.src}
-                        alt={b.name}
-                        className="mx-auto"
-                      />
-                      <p>{b.name}</p>
-                    </div>
+                    <a
+                      key={i}
+                      href={b.destinationUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {b.logo.fixed ? (
+                        <img
+                          src={b.logo.fixed.src}
+                          alt={b.name}
+                          className="mx-auto"
+                          style={{
+                            maxHeight: "150px",
+                          }}
+                        />
+                      ) : (
+                        ""
+                      )}
+                      {s.showNames ? <p>{b.name}</p> : ""}
+                    </a>
                   )
                 })}
               </div>

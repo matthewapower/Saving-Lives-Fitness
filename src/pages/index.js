@@ -96,7 +96,9 @@ export const query = graphql`
               src
             }
           }
+          destinationUrl
         }
+        showNames
       }
     }
   }

@@ -12,8 +12,16 @@ export default function TrainerSection(props) {
           <div>
             {props.trainers.map((t, i) => {
               return (
-                <div className="grid md:grid-cols-3 max-w-2xl mb-20 items-center mx-auto">
-                  <img src={t.image.fixed.src} alt={t.name} />
+                <div className="grid gap-4 md:grid-cols-3 max-w-2xl mb-20 items-center mx-auto">
+                  <div>
+                    <div
+                      class="rounded-full"
+                      style={{
+                        background: `url(${t.image.fixed.src}) center center/cover`,
+                        paddingBottom: "100%",
+                      }}
+                    />
+                  </div>
                   <PersonInfo
                     className="md:col-span-2"
                     name={t.name}

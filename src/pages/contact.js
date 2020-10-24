@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from "../components/hero"
 import ContactForm from "../components/contactForm"
+import { css } from "@emotion/core"
 
 const Contact = ({ data }) => {
   const content = data.contentfulContactPage
@@ -33,13 +34,28 @@ const Contact = ({ data }) => {
       </section>
       <section className="py-12 px-4 md:px-12">
         <div
-          style={{
-            background: `url(${content.ctaBackgroundImage.fluid.src}) center center/cover`,
-            borderRadius: "50px",
-          }}
+          css={css`
+            background: url(${content.ctaBackgroundImage.fluid.src}) center
+              center/cover;
+            position: relative;
+            border-radius: 50px;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: #3ad6ea;
+              z-index: 0;
+              opacity: 0.7;
+              border-radius: 50px;
+            }
+          `}
           className="w-full p-12 md:p-32 container mx-auto"
         >
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center relative z-10">
             <h2 className="text-white font-bold subheading mb-12">
               {content.ctaTitle}
             </h2>
