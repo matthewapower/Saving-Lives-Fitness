@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -30,6 +30,7 @@ const Layout = props => {
       }
     }
   `)
+  const [navOpen, setNavOpen] = useState(false)
   let links = [
     { name: data.contentfulSettings.aboutPageTitle, dest: "/about" },
     { name: data.contentfulSettings.membershipPageTitle, dest: "/memberships" },
@@ -58,11 +59,17 @@ const Layout = props => {
   }
 
   return (
-    <div className="min-h-screen relative">
+    <div
+      className={`min-h-screen relative ${
+        navOpen ? "h-screen overflow-hidden" : ""
+      }`}
+    >
       <Header
         siteTitle={data.site.siteMetadata.title}
         home={props.home}
         links={links}
+        navOpen={navOpen}
+        setNavOpen={setNavOpen}
       />
       <main>{props.children}</main>
       <Footer links={links} />

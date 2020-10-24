@@ -25,8 +25,8 @@ const Memberships = ({ data }) => {
               "py-40 px-4 md:px-0 " + (i % 2 === 0 ? "" : "bg-gray-200")
             }
           >
-            <div className="container mx-auto grid gap-8 md:grid-cols-2 items-center justify-center">
-              <div>
+            <div className="container mx-auto grid gap-8 md:grid-cols-2 items-center justify-center ">
+              <div className="order-last md:order-first">
                 <h2 className="subheading mb-20 pb-8 border-b border-secondary inline-block">
                   {m.name}
                 </h2>

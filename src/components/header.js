@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import MobileNav from "./mobileNav"
 import Hamburger from "./hamburger"
 import { css } from "@emotion/core"
@@ -7,8 +7,16 @@ import { css } from "@emotion/core"
 import logo from "../images/slf-logo.svg"
 
 const Header = props => {
-  const [navOpen, setNavOpen] = useState(false)
-  const logoPos = props.home ? "translateY(70%) scale(1.6)" : ""
+  const [logoPos, setLogoPos] = useState(
+    props.home || props.navOpen ? "translateY(70%) scale(1.6)" : ""
+  )
+  useEffect(() => {
+    if (props.navOpen) {
+      setLogoPos("")
+    } else if (props.home) {
+      setLogoPos("translateY(70%) scale(1.6)")
+    }
+  }, [props.navOpen, setLogoPos])
 
   return (
     <>
@@ -19,6 +27,7 @@ const Header = props => {
           css={css`
             transform: ${logoPos};
             max-width: 400px;
+            transition: transform 0.4s ease;
           `}
         >
           <img
@@ -41,9 +50,9 @@ const Header = props => {
             </Link>
           )
         })}
-        <Hamburger open={navOpen} setOpen={setNavOpen} />
+        <Hamburger open={props.navOpen} setOpen={props.setNavOpen} />
       </header>
-      <MobileNav open={navOpen} links={props.links} />
+      <MobileNav open={props.navOpen} links={props.links} />
     </>
   )
 }
