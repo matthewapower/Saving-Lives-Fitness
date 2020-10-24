@@ -28,9 +28,7 @@ export default function HeroHome(props) {
         style={{ paddingTop: "50vh" }}
       >
         <h1 className="heading text-white mb-12">
-          <Fade big cascade>
-            {props.title}
-          </Fade>
+          <Fade big>{props.title}</Fade>
         </h1>
         <Link to="/memberships" className="btn-small-white mb-12">
           Get Started
