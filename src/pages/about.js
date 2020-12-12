@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from "../components/hero"
 import ValueFeature from "../components/valueFeature"
-import TrainerSection from "../components/trainerSection"
+// import TrainerSection from "../components/trainerSection"
 import BrandFeature from "../components/brandFeature"
 
 const About = ({ data }) => {
@@ -17,22 +17,24 @@ const About = ({ data }) => {
         bg={content.heroImage}
         title={content.title}
         subtitle={content.subtitle}
-        description={content.description.description}
+        description={
+          content.description ? content.description.description : " "
+        }
       />
       <ValueFeature
         heading={content.sectionOneHeading}
         description={content.sectionOneDescription.sectionOneDescription}
         pillars={content.brandPillars}
       />
-      <TrainerSection
+      {/* <TrainerSection
         heading={content.sectionTwoHeading}
         description={content.sectionTwoDescription.sectionTwoDescription}
         trainers={content.trainers}
-      />
+      /> */}
       <BrandFeature
         heading={content.sectionThreeHeading}
         description={content.sectionThreeDescription.sectionThreeDescription}
-        sections={content.brandSections}
+        sections={content.brandSections ? content.brandSections : []}
       />
     </Layout>
   )
@@ -47,10 +49,10 @@ export const query = graphql`
         }
       }
       title
-      subtitle
-      description {
-        description
-      }
+      # subtitle
+      # description {
+      #   description
+      # }
       sectionOneHeading
       sectionOneDescription {
         sectionOneDescription
@@ -91,22 +93,22 @@ export const query = graphql`
       sectionThreeDescription {
         sectionThreeDescription
       }
-      brandSections {
-        title
-        description {
-          description
-        }
-        brands {
-          name
-          logo {
-            fixed(width: 200, quality: 100) {
-              src
-            }
-          }
-          destinationUrl
-        }
-        showNames
-      }
+      # brandSections {
+      #   title
+      #  description {
+      #    description
+      #  }
+      #  brands {
+      #    name
+      #    logo {
+      #      fixed(width: 200, quality: 100) {
+      #        src
+      #      }
+      #    }
+      #    destinationUrl
+      #  }
+      #  showNames
+      # }
     }
   }
 `

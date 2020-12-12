@@ -33,7 +33,7 @@ const Layout = props => {
   const [navOpen, setNavOpen] = useState(false)
   let links = [
     { name: data.contentfulSettings.aboutPageTitle, dest: "/about" },
-    { name: data.contentfulSettings.membershipPageTitle, dest: "/memberships" },
+    // { name: data.contentfulSettings.membershipPageTitle, dest: "/memberships" },
     {
       name: data.contentfulSettings.testimonialPageTitle,
       dest: "/success-stories",
@@ -44,10 +44,10 @@ const Layout = props => {
   if (data.contentfulSettings.shopLive) {
     links = [
       { name: data.contentfulSettings.aboutPageTitle, dest: "/about" },
-      {
-        name: data.contentfulSettings.membershipPageTitle,
-        dest: "/memberships",
-      },
+      // {
+      //   name: data.contentfulSettings.membershipPageTitle,
+      //   dest: "/memberships",
+      // },
       { name: "Apparel", dest: "/shop" },
       {
         name: data.contentfulSettings.testimonialPageTitle,

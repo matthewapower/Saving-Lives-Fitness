@@ -24,11 +24,11 @@ const IndexPage = ({ data }) => {
         pillars={content.brandPillars}
         text={content.membershipButtonText}
       />
-      <FeaturedTestimonial
+      {/* <FeaturedTestimonial
         bg={content.featureSectionBackground}
         headline={content.featuredSectionHeadline}
         testimonial={content.featuredSectionTestimonial}
-      />
+      /> */}
       <SubscribeBanner
         heading={content.subscribeHeading}
         bg={content.subscribeBackground}

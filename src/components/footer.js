@@ -26,9 +26,9 @@ export default function Footer(props) {
             <Link className="mb-4" to="/privacy-policy">
               Privacy Policy
             </Link>
-            <Link className="mb-4" to="/cancellations">
+            {/* <Link className="mb-4" to="/cancellations">
               Cancellations & Returns
-            </Link>
+            </Link> */}
             <p>Saving Lives Fitness {new Date().getFullYear()} ©</p>
           </div>
           <div className="md:w-1/3 mb-12 md:mb-0 text-center md:text-left">

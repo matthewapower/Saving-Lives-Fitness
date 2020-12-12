@@ -20,10 +20,25 @@ const Header = props => {
 
   return (
     <>
-      <header className="flex absolute top-0 inset-x-0 items-center justify-center ">
+      <header className="grid absolute top-0 inset-x-0 items-center justify-center grid-cols-5">
+        <div class="order-1 flex col-span-2 justify-end">
+          {props.links.map((l, i) => {
+            if (i + 1 <= props.links.length / 2)
+              return (
+                <Link
+                  to={l.dest}
+                  className={
+                    "text-white m-4 xl:m-8 hidden relative z-30 uppercase lg:flex"
+                  }
+                >
+                  {l.name}
+                </Link>
+              )
+          })}
+        </div>
         <Link
           to="/"
-          className="p-4 z-50 order-2 w-1/2 lg:w-1/5"
+          className="p-4 z-50 order-2"
           css={css`
             transform: ${logoPos};
             max-width: 400px;
@@ -36,20 +51,21 @@ const Header = props => {
             className="w-full mx-auto"
           />
         </Link>
-        {props.links.map((l, i) => {
-          const divide = i + 1 > props.links.length / 2
-          return (
-            <Link
-              to={l.dest}
-              className={
-                "text-white m-4 xl:m-8 hidden lg:inline-block relative z-30 uppercase" +
-                (divide ? " order-3" : " order-1")
-              }
-            >
-              {l.name}
-            </Link>
-          )
-        })}
+        <div class="order-3 flex col-span-2">
+          {props.links.map((l, i) => {
+            if (i + 1 > props.links.length / 2)
+              return (
+                <Link
+                  to={l.dest}
+                  className={
+                    "text-white m-4 xl:m-8 hidden relative z-30 uppercase lg:flex"
+                  }
+                >
+                  {l.name}
+                </Link>
+              )
+          })}
+        </div>
         <Hamburger open={props.navOpen} setOpen={props.setNavOpen} />
       </header>
       <MobileNav open={props.navOpen} links={props.links} />

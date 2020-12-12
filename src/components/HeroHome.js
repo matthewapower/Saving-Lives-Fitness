@@ -27,15 +27,17 @@ export default function HeroHome(props) {
         className="container mx-auto flex flex-col items-center justify-end text-center px-8 relative z-10"
         style={{ paddingTop: "50vh" }}
       >
-        <h1 className="heading text-white mb-12">
+        <h1 className="heading text-white mb-12 max-w-lg">
           <Fade big>{props.title}</Fade>
         </h1>
-        <Link to="/memberships" className="btn-small-white mb-12">
+        <Link to="/shop" className="btn-small-white mb-12">
           Get Started
         </Link>
       </div>
       <div className="container mx-auto flex flex-col items-center justify-end text-center pt-32 pb-64 px-8 relative z-10">
-        <h2 className="subheading text-secondary">{props.subtitle}</h2>
+        <h2 className="subheading text-secondary max-w-lg leading-normal">
+          {props.subtitle}
+        </h2>
         <p className="body text-white">{props.description}</p>
       </div>
     </section>
