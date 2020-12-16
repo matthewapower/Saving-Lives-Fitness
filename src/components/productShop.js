@@ -3,32 +3,61 @@ import { Link } from "gatsby"
 import { useState, useEffect, useMemo } from "react"
 import { prepareVariantsWithOptions, prepareVariantsImages } from "../utils"
 import { useAddItemToCart } from "gatsby-theme-shopify-manager"
-import { css } from "@emotion/core"
+import OptionPicker from "./optionPicker"
 
 export default function ProductShop(props) {
-  const sizes = props.product.options.find(
-    option => option.name.toLowerCase() === "size"
-  ).values
-
+  const pos1options = props.product.options[0]
+    ? props.product.options[0].values
+    : false
+  const pos2options = props.product.options[1]
+    ? props.product.options[1].values
+    : false
+  const pos3options = props.product.options[2]
+    ? props.product.options[2].values
+    : false
   const variants = useMemo(
     () => prepareVariantsWithOptions(props.product.variants),
     [props.product.variants]
   )
-  const images = useMemo(() => prepareVariantsImages(variants, "size"), [
+  const images = useMemo(() => prepareVariantsImages(variants, "Color"), [
     variants,
   ])
+  console.log(variants.length)
   const addItemToCart = useAddItemToCart()
   const [variant, setVariant] = useState(variants[0])
-  const [size, setSize] = useState(variant.size)
+  const [option1, setOption1] = useState(
+    variant.selectedOptions[0] ? variant.selectedOptions[0].value : false
+  )
+  const [option2, setOption2] = useState(
+    variant.selectedOptions[1] ? variant.selectedOptions[1].value : false
+  )
+  const [option3, setOption3] = useState(
+    variant.selectedOptions[2] ? variant.selectedOptions[2].value : false
+  )
   useEffect(() => {
     const newVariant = variants.find(variant => {
-      return variant.size === size
+      if (variant.selectedOptions.length === 1) {
+        return variant.selectedOptions[0].value === option1
+      } else if (variant.selectedOptions.length === 2) {
+        return (
+          variant.selectedOptions[0].value === option1 &&
+          variant.selectedOptions[1].value === option2
+        )
+      } else if (variant.selectedOptions.length === 3) {
+        return (
+          variant.selectedOptions[0].value === option1 &&
+          variant.selectedOptions[1].value === option2 &&
+          variant.selectedOptions[2].value === option3
+        )
+      } else {
+        return variants[0]
+      }
     })
 
     if (variant.shopifyId !== newVariant.shopifyId) {
       setVariant(newVariant)
     }
-  }, [size, variants, variant.shopifyId])
+  }, [option1, option2, option3, variants, variant.shopifyId])
   function handleAddToCart() {
     addItemToCart(variant.shopifyId, 1)
   }
@@ -52,41 +81,39 @@ export default function ProductShop(props) {
             />
             <h3 className="heading">${variant.price}</h3>
             <div className="flex flex-col items-start">
-              <div
-                className="mb-4 relative"
-                css={css`
-                  &:after {
-                    content: "";
-                    border-left: 1px solid black;
-                    border-bottom: 1px solid black;
-                    display: block;
-                    height: 10px;
-                    width: 10px;
-                    position: absolute;
-                    top: 15px;
-                    right: 12px;
-                    z-index: 1;
-                    transform: rotate(-45deg);
-                  }
-
-                  select {
-                    -webkit-appearance: none;
-                  }
-                `}
-              >
-                {/* <label>Size</label> */}
-                <select
-                  onChange={e => setSize(e.target.value)}
-                  value={size}
-                  className="border border-secondary p-4 py-2 pr-8 rounded-full appearance-none relative"
-                >
-                  {sizes.map(size => (
-                    <option value={size} key={size}>
-                      {size}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              {variant.selectedOptions.length >= 1 ? (
+                <OptionPicker
+                  key={props.product.options[0].name}
+                  name={props.product.options[0].name}
+                  options={pos1options}
+                  selected={option1}
+                  onChange={event => setOption1(event.target.value)}
+                />
+              ) : (
+                ""
+              )}
+              {variant.selectedOptions.length >= 2 ? (
+                <OptionPicker
+                  key={props.product.options[1].name}
+                  name={props.product.options[1].name}
+                  options={pos2options}
+                  selected={option2}
+                  onChange={event => setOption2(event.target.value)}
+                />
+              ) : (
+                ""
+              )}
+              {variant.selectedOptions.length === 3 ? (
+                <OptionPicker
+                  key={props.product.options[2].name}
+                  name={props.product.options[2].name}
+                  options={pos3options}
+                  selected={option3}
+                  onChange={event => setOption3(event.target.value)}
+                />
+              ) : (
+                ""
+              )}
               <Link
                 className="btn-small"
                 to="/cart"
